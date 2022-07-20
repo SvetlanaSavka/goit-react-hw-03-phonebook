@@ -48,7 +48,7 @@ export const ContactForm = ({ onSubmit }) => {
       onSubmit={handleSubmit}
     >
       <Formcontact autoComplete="off">
-        <Formcontactlabel for="user-name">Name</Formcontactlabel>
+        <Formcontactlabel htmlFor="user-name">Name</Formcontactlabel>
         <ContactFormField type="text" name="name" id="user-name" />
         <ErrorMessage name="name" />
 

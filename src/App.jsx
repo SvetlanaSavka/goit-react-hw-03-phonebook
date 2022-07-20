@@ -27,6 +27,21 @@ export class App extends React.Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    if (contacts) {
+      this.setState(contacts);
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+
   validationData = data =>
     this.state.contacts.find(contact => contact.name === data.name);
 
@@ -49,7 +64,7 @@ export class App extends React.Component {
 
   changeFilter = event => {
     this.setState({
-      filter: event.currentTarget.value, //обновляем фильтр
+      filter: event.currentTarget.value,
     });
   };
 
@@ -64,7 +79,6 @@ export class App extends React.Component {
   };
 
   deleteContact = id => {
-    // array.filter(el => el.name !== name)
     const filteredArray = this.state.contacts.filter(el => el.id !== id);
     this.setState({ contacts: filteredArray });
   };
@@ -86,3 +100,8 @@ export class App extends React.Component {
     );
   }
 }
+/* Возьми свое решение задания из предыдущей домашней работы и добавь хранение контактов телефонной книги в localStorage. Используй методы жизненного цикла.
+
+При добавлении и удалении контакта, контакты сохраняются в локальное хранилище.
+При загрузке приложения, контакты, если таковые есть, считываются из локального хранилища и записываются в состояние.
+*/

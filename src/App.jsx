@@ -1,20 +1,9 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
-
+import { Container } from 'components/Container/Container.styled';
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  justify-self: center;
-  width: 600px;
-  padding: 32px;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px #ccc;
-  font-family: sans-serif;
-  letter-spacing: 1px;
-`;
 
 export class App extends React.Component {
   state = {
